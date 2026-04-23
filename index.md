@@ -1,19 +1,19 @@
-<!--
-  Landing page for ghostnotelabs.studio.
-
-  The default layout switches on page.url == "/" and injects this
-  content directly (without the doc-page header/footer wrapper). All
-  markup here is the hero/landing content itself.
-
-  Keep this file HTML-only (no markdown) so the site renders exactly
-  as styled, without Kindle/Jekyll wrapping prose in <p> tags that
-  would fight the layout.
--->
 ---
 layout: default
 permalink: /
 title:
 ---
+<!--
+  Landing page for ghostnotelabs.studio. Kept as raw HTML (no
+  markdown body) so the styling lines up exactly with what the
+  default layout provides — no auto-wrapping of prose in <p> tags
+  that would fight the .home flex layout.
+
+  Front matter MUST be the very first characters in this file.
+  Any content before the opening --- (including HTML comments)
+  causes Jekyll to skip parsing and render the YAML as literal
+  text in the page body.
+-->
 
 <section class="home">
   <img class="home-logo" src="{{ '/assets/logo.svg' | relative_url }}" alt="Ghostnote Labs">
