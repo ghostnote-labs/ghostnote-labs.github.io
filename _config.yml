@@ -1,0 +1,22 @@
+# Jekyll config for the Ghostnote Labs studio site.
+# Custom single layout (no theme package) to keep weight small and
+# styling locked to the logo's palette.
+
+title: Ghostnote Labs
+description: A small software studio in Portland, Oregon, building craft-focused consumer products.
+url: "https://ghostnotelabs.studio"
+baseurl: ""
+
+exclude:
+  - README.md
+  - CLAUDE.md
+  - .gitignore
+
+permalink: /:title
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"

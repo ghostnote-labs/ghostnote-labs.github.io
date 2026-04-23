@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ghostnote Labs LLC — a small software studio in Portland, Oregon, building craft-focused consumer products.">
+  <title>{% if page.title %}{{ page.title }} · {% endif %}Ghostnote Labs</title>
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/logo.svg' | relative_url }}">
+  <style>
+    :root {
+      --bg: #111213;
+      --text: #e8e2d4;
+      --text-muted: #908070;
+      --accent: #3db8a8;
+      --border: #2a2a2d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+      width: 100%;
+    }
+
+    /* Home / landing */
+    .home {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 48px 24px;
+    }
+
+    .home-logo {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 40px;
+      display: block;
+    }
+
+    .home h1 {
+      font-size: 32px;
+      font-weight: 300;
+      letter-spacing: 6px;
+      text-align: center;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .home-tagline {
+      font-size: 17px;
+      color: var(--text);
+      max-width: 480px;
+      margin: 0 auto 16px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .home-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 48px;
+      text-align: center;
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    .home-contact {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    .home-contact a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .home-contact a:hover { border-bottom-color: var(--accent); }
+
+    /* Document pages (privacy / terms) — readable prose */
+    .doc-page h1 {
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .doc-page h2 {
+      font-size: 20px;
+      font-weight: 500;
+      margin: 40px 0 12px;
+      color: var(--text);
+    }
+
+    .doc-page h3 {
+      font-size: 16px;
+      font-weight: 500;
+      margin: 24px 0 8px;
+      color: var(--text);
+      letter-spacing: 0.5px;
+    }
+
+    .doc-page p, .doc-page li {
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .doc-page ul, .doc-page ol {
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    .doc-page li { margin-bottom: 6px; }
+
+    .doc-page a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .doc-page a:hover { border-bottom-color: var(--accent); }
+
+    .doc-page strong { color: var(--text); font-weight: 600; }
+
+    .doc-page hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 40px 0;
+    }
+
+    .doc-page code {
+      background: #1a1b1c;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 0.9em;
+      color: var(--accent);
+    }
+
+    /* Header on doc pages */
+    .doc-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 0 32px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+
+    .doc-header img {
+      width: 36px;
+      height: 36px;
+    }
+
+    .doc-header a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    .doc-header a:hover { color: var(--text); }
+
+    /* Footer */
+    footer {
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin: 0 12px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--accent); }
+
+    .footer-entity {
+      margin-top: 12px;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 520px) {
+      .home-logo { width: 110px; height: 110px; }
+      .home h1 { font-size: 26px; letter-spacing: 4px; }
+      .home-tagline { font-size: 16px; }
+      main { padding: 32px 20px 64px; }
+    }
+  </style>
+</head>
+<body>
+  {% if page.url == "/" %}
+    {{ content }}
+  {% else %}
+    <main class="doc-page">
+      <div class="doc-header">
+        <a href="{{ '/' | relative_url }}"><img src="{{ '/assets/logo.svg' | relative_url }}" alt="Ghostnote Labs"></a>
+        <a href="{{ '/' | relative_url }}">GHOSTNOTE LABS</a>
+      </div>
+      {{ content }}
+    </main>
+  {% endif %}
+  <footer>
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <a href="{{ '/privacy' | relative_url }}">Privacy</a>
+    <a href="{{ '/terms' | relative_url }}">Terms</a>
+    <a href="mailto:ghostnotelabsllc@gmail.com">Contact</a>
+    <div class="footer-entity">Ghostnote Labs LLC · Portland, Oregon · est. 2026</div>
+  </footer>
+</body>
+</html>
