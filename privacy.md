@@ -54,10 +54,29 @@ The App includes a conversational AI familiar character, powered by an external 
 
 During Alpha testing, we collect feedback responses through Google Forms. Survey responses are stored in Google Workspace under the Ghostnote Labs account. Responses are tied to your tester identity (so we can correlate with interview notes) but are not shared publicly. See §4 for retention.
 
-### 2.4 What we do NOT collect
+### 2.4 Anonymous usage telemetry (Alpha only)
+
+To understand how the App is being used during Alpha — whether the post-workout reveal feels rewarding enough that you come back, where the experience drags or surprises, whether the AI familiar is being used at all — the App sends anonymous usage events to our backend.
+
+What is captured:
+
+- An anonymous, randomly-generated install identifier — created the first time you open the App and stored only on your device. Not tied to your name, email, account, or any device-identifying ID.
+- A per-launch session identifier (also random).
+- Event type and timing for these specific moments: app open, post-workout reveal start / completion, level-up crossings, AI familiar message exchanges (count and length only), screen views.
+- Numeric properties of those events — durations in milliseconds, character counts of messages sent and received, the level number crossed, the in-game thread name.
+
+What is **not** captured:
+
+- We never capture the **content** of your messages with the AI familiar (only how long they are).
+- We never capture **values** from your workouts (no heart rate numbers, no distances, no calorie counts, no workout type, no health metrics of any kind).
+- No personally identifiable information ever leaves the device through this channel.
+
+Telemetry events are stored in our backend (AWS DynamoDB, region us-west-2) for 90 days, then automatically deleted. They are used solely for understanding Alpha-cohort engagement and are never sold, shared, or used for advertising.
+
+### 2.5 What we do NOT collect
 
 - We do not collect advertising identifiers.
-- We do not run third-party analytics.
+- We do not run third-party analytics platforms (no Firebase Analytics, no Mixpanel, no Google Analytics).
 - We do not collect location data beyond what Health Connect surfaces from your workouts.
 - We do not collect contacts, photos, or messages outside the App.
 - The App contains no advertising.
@@ -89,6 +108,7 @@ We pass Anthropic the minimum information needed to generate a response (your me
 - **Local app data** (workouts, conversation history, in-game progression): retained on your device until you uninstall the App or clear app data through your device settings. Uninstalling the App deletes all locally stored data.
 - **Survey responses**: retained for the duration of the Alpha test plus six months for analysis, then deleted from Google Workspace storage. Aggregate, non-identifying insights derived from survey responses (e.g. average ratings, common themes) may be retained indefinitely.
 - **Interview notes**: retained for the duration of the Alpha test plus six months, then deleted.
+- **Anonymous usage telemetry**: retained in our backend for 90 days from the event timestamp, then automatically deleted via DynamoDB time-to-live. We do not connect telemetry events to your identity (no real name, email, or device ID), so deletion-by-request applies to the anonymous install identifier rather than to "you" specifically — emailing ghostnotelabsllc@gmail.com with your install identifier (visible in a future settings screen) will purge the events tied to it within 7 days.
 
 You may request deletion of your survey responses and interview notes at any time by emailing ghostnotelabsllc@gmail.com.
 
@@ -99,6 +119,7 @@ You may request deletion of your survey responses and interview notes at any tim
 - **Health permissions:** revoke at any time through your device Settings.
 - **Local data:** clear by uninstalling the App or via Settings → Apps → [the App] → Storage → Clear data.
 - **AI familiar chat:** simply do not use the chat feature; no message means no transmission to Anthropic.
+- **Anonymous usage telemetry:** opt out via the App's settings (forthcoming). Until the in-app toggle ships, you may email ghostnotelabsllc@gmail.com to be excluded from telemetry collection on your install.
 - **Survey responses:** request deletion by email to ghostnotelabsllc@gmail.com.
 
 ---
